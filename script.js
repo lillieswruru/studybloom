@@ -1633,11 +1633,11 @@ function updateProgress() {
 
 const photos = [
 
-    "images/photo1.jpeg",
+    "photo1.jpeg",
 
-    "images/photo2.jpeg",
+    "photo2.jpeg",
 
-    "images/photo3.jpeg"
+    "photo3.jpeg"
 
 ];
 
