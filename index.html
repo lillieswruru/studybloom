@@ -1,888 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>study bloom</title>
-
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8dce8" />
+  <title>Study Bloom</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
-
 <body>
+  <div id="splash" class="splash" aria-label="Opening Study Bloom">
+    <div class="splash-logo-wrap">
+      <img src="assets/study-bloom-logo.png" class="splash-logo" alt="Study Bloom" />
+    </div>
+  </div>
 
+  <div id="app" class="app-shell hidden-app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-block">
+        <img src="assets/study-bloom-logo.png" class="brand-logo" alt="Study Bloom logo" />
+        <div class="brand-copy">
+          <h1 id="dashboardTitle">my dashboard</h1>
+          <button id="editDashboardTitle" class="tiny-link" type="button">edit name</button>
+        </div>
+      </div>
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-button active" data-page="dashboard">🏠 <span>Dashboard</span></button>
+        <button class="nav-button" data-page="assignments">📚 <span>Assignments</span></button>
+        <button class="nav-button" data-page="habits">🌱 <span>Habits</span></button>
+        <button class="nav-button" data-page="todo">✓ <span>To-Do</span></button>
+        <button class="nav-button" data-page="calendar">📅 <span>Calendar</span></button>
+        <button class="nav-button" data-page="settings">⚙️ <span>Settings</span></button>
+      </nav>
 
-    <aside class="sidebar">
-
-        <h1>✿ my dashboard</h1>
-
-
-        <nav>
-
-            <button
-                class="nav-button active"
-                data-page="dashboard">
-                🏠 Dashboard
-            </button>
-
-
-            <button
-                class="nav-button"
-                data-page="assignments">
-                📚 Assignments
-            </button>
-
-
-            <button
-                class="nav-button"
-                data-page="habits">
-                🌱 Habits
-            </button>
-
-
-            <button
-                class="nav-button"
-                data-page="todo">
-                ✓ To-Do
-            </button>
-
-
-            <button
-                class="nav-button"
-                data-page="calendar">
-                📅 Calendar
-            </button>
-
-        </nav>
-
+      <div class="sidebar-footer">
+        <div class="mini-profile" id="miniProfile">
+          <div class="avatar" id="miniAvatar">♡</div>
+          <div>
+            <strong id="miniName">Study Bloom</strong>
+            <span id="miniStatus">cozy study space</span>
+          </div>
+        </div>
+      </div>
     </aside>
 
-
-
-    <!-- =========================
-         MAIN
-    ========================== -->
-
-    <main>
-
-
-        <!-- =========================
-             DASHBOARD PAGE
-        ========================== -->
-
-        <section
-            id="dashboardPage"
-            class="page active-page">
-
-
-            <header>
-
-                <p id="today"></p>
-
-                <h2>
-                    Good morning! ☀️
-                </h2>
-
-                <p class="subtitle">
-                    Let's make today a good day.
-                </p>
-
-            </header>
-
-            <!-- POMODORO TIMER -->
-<div class="pomodoro-card">
-
-    <h2>🍅 Pomodoro</h2>
-
-    <p id="pomodoroMode">📚 Study Time</p>
-
-    <div id="pomodoroTimer">25:00</div>
-
-    <div class="pomodoro-buttons">
-        <button id="pomodoroStart">▶ Start</button>
-        <button id="pomodoroPause">⏸ Pause</button>
-        <button id="pomodoroReset">↻ Reset</button>
-    </div>
-
-    <div class="pomodoro-settings">
-        <button id="pomodoroStudy">25 min Study</button>
-        <button id="pomodoroBreak">5 min Break</button>
-    </div>
-
-    <p id="pomodoroSessions">Sessions completed: 0</p>
-
-</div>
-
-
-
-            <!-- PHOTO + STATS -->
-
-            <section class="top-section">
-
-
-                <!-- PHOTO -->
-
-                <div class="photo-widget">
-
-                    <div class="photo-stack">
-
-                        <div
-                            class="stack-card card-back-two">
-                        </div>
-
-                        <div
-                            class="stack-card card-back-one">
-                        </div>
-
-                        <img
-                            id="stackImage"
-                            src="photo1.jpeg"
-                            alt="My photo"
-                            class="main-photo">
-
-                    </div>
-
-
-                    <div class="photo-controls">
-
-                        <button id="previousPhoto">
-                            ‹
-                        </button>
-
-                        <span id="photoNumber">
-                            1 / 3
-                        </span>
-
-                        <button id="nextPhoto">
-                            ›
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- STATS -->
-
-                <div class="stats">
-
-
-                    <div class="card">
-
-                        <h3>
-                            📚 Assignments
-                        </h3>
-
-                        <p
-                            class="big-number"
-                            id="assignmentCount">
-                            0
-                        </p>
-
-                        <p>
-                            remaining
-                        </p>
-
-                    </div>
-
-
-                    <div class="card">
-
-                        <h3>
-                            🌱 Habits
-                        </h3>
-
-                        <p
-                            class="big-number"
-                            id="habitProgress">
-                            0/0
-                        </p>
-
-                        <p>
-                            completed today
-                        </p>
-
-                    </div>
-
-
-                    <div class="card">
-
-                        <h3>
-                            🔥 Streak
-                        </h3>
-
-                        <p
-                            class="big-number"
-                            id="habitStreak">
-                            0
-                        </p>
-
-                        <p>
-                            days
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- QUICK VIEW -->
-
-            <section class="content">
-
-
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <h2>
-                            📚 Upcoming Assignments
-                        </h2>
-
-                        <button
-                            id="dashboardAddAssignment">
-                            + Add
-                        </button>
-
-                    </div>
-
-                    <div id="dashboardAssignmentList"></div>
-
-                </div>
-
-
-
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <h2>
-                            🌱 Today's Habits
-                        </h2>
-
-                        <button
-                            id="dashboardAddHabit">
-                            + Add
-                        </button>
-
-                    </div>
-
-                    <div id="dashboardHabitList"></div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- PROGRESS -->
-
-            <section class="progress-panel">
-
-                <h2>
-                    🌷 Today's Progress
-                </h2>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="progressFill"
-                        class="progress-fill">
-                    </div>
-
-                </div>
-
-                <p id="progressText">
-                    0% complete
-                </p>
-
-            </section>
-
+    <button id="mobileMenu" class="mobile-menu" type="button" aria-label="Open menu">☰</button>
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <main class="main-content">
+      <section id="dashboardPage" class="page active-page">
+        <header class="page-header">
+          <p id="today" class="eyebrow"></p>
+          <h2 id="greeting">Good morning! ☀️</h2>
+          <p class="subtitle">Let's make today a good day.</p>
+        </header>
+
+        <section class="dashboard-progress panel">
+          <div class="panel-heading">
+            <div>
+              <span class="section-kicker">little steps count</span>
+              <h3>🌷 Today's Progress</h3>
+            </div>
+            <strong id="progressText">0%</strong>
+          </div>
+          <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+          <p id="progressDetails" class="muted">Complete an assignment, habit, or task to grow your progress.</p>
         </section>
 
-
-
-        <!-- =========================
-             ASSIGNMENTS PAGE
-        ========================== -->
-
-        <section
-            id="assignmentsPage"
-            class="page">
-
-
-            <header>
-
-                <p>
-                    University
-                </p>
-
-                <h2>
-                    📚 Assignments
-                </h2>
-
-            </header>
-
-
-
-            <div class="panel">
-
-
-                <div class="panel-header">
-
-                    <h2>
-                        All Assignments
-                    </h2>
-
-                    <button
-                        id="addAssignmentButton">
-                        + Add Assignment
-                    </button>
-
-                </div>
-
-
-
-                <!-- FORM -->
-
-                <div
-                    id="assignmentForm"
-                    class="assignment-form hidden">
-
-
-                    <input
-                        type="text"
-                        id="assignmentName"
-                        placeholder="Assignment name">
-
-
-                    <input
-                        type="text"
-                        id="assignmentCourse"
-                        placeholder="Course">
-
-
-                    <input
-                        type="date"
-                        id="assignmentDate">
-
-
-                    <select
-                        id="assignmentPriority">
-
-                        <option value="urgent">
-                            🔴 High
-                        </option>
-
-                        <option value="medium">
-                            🟡 Medium
-                        </option>
-
-                        <option value="low">
-                            🟢 Low
-                        </option>
-
-                    </select>
-
-
-                    <div class="form-buttons">
-
-                        <button
-                            id="saveAssignment">
-                            Save
-                        </button>
-
-                        <button
-                            id="cancelAssignment">
-                            Cancel
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <div id="assignmentList"></div>
-
-
-<!-- =========================
-     MY CLASSES
-========================= -->
-
-<div class="panel classes-panel">
-
-    <div class="panel-header">
-
-        <h2>
-            📚 My Classes
-        </h2>
-
-        <button id="addClassButton">
-            + Add Class
-        </button>
-
-    </div>
-
-
-    <p class="classes-description">
-        Keep your subjects, chapters and study materials organised.
-    </p>
-
-
-    <div id="classesContainer" class="class-grid">
-
-        <!-- Classes will appear here later -->
-
-        <div class="class-empty">
-
-            <div class="class-empty-icon">
-                🌷
+        <section class="focus-cafe panel">
+          <div class="focus-head">
+            <div>
+              <span class="section-kicker">✿ focus café</span>
+              <h3>What are we brewing?</h3>
             </div>
-
-            <h3>
-                No classes yet
-            </h3>
-
-            <p>
-                Add your university classes to get started.
-            </p>
-
-        </div>
-
-    </div>
-<div id="classDetails" class="class-details hidden">
-
-    <button id="backToClasses" class="back-button">
-        ← All Classes
-    </button>
-
-    <h2 id="selectedClassName"></h2>
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h2>📖 Chapters</h2>
-
-            <button id="addChapterButton">
-                + Add Chapter
-            </button>
-
-        </div>
-
-        <div id="chapterContainer" class="chapter-grid">
-        </div>
-        <!-- FLASHCARD VIEW -->
-
-<div id="flashcardView" class="hidden">
-
-    <button id="backToChapters" class="back-button">
-        ← Back to Chapters
-    </button>
-   <button
-    id="fullscreenFlashcards"
-    class="back-button"
-    onclick="openStudyMode()"
->
-    ⛶ Study Fullscreen
-</button>
-<button id="startStudyTimer" class="back-button">
-    🍅 Start Study Timer
-</button>
-
-    <h2 id="selectedChapterName">
-        🧠 Flashcards
-    </h2>
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h2>🧠 Flashcards</h2>
-
-            <button id="addFlashcardButton">
-                + Add Flashcard
-            </button>
-            <div id="flashcardForm" class="hidden">
-
-    <input
-        type="text"
-        id="flashcardQuestion"
-        placeholder="Enter question"
-    >
-
-    <textarea
-        id="flashcardAnswer"
-        placeholder="Enter answer"
-    ></textarea>
-
-    <button id="saveFlashcardButton">
-        Save Flashcard
-    </button>
-
-    <button id="cancelFlashcardButton">
-        Cancel
-    </button>
-
-</div>
-<div id="studyMode" class="hidden">
-
-    <button id="exitStudyMode">
-        ✕ Exit Study Mode
-    </button>
-
-    <div id="studyCardNumber">
-        1 / 1
-    </div>
-
-    <div id="studyCard">
-
-        <div id="studyQuestion">
-            Question
-        </div>
-
-        <div id="studyAnswer" class="hidden">
-            Answer
-        </div>
-
-        <p>
-            Click the card to reveal the answer
-        </p>
-
-    </div>
-
-    <div class="study-navigation">
-
-        <button id="studyPrevious">
-            ← Previous
-        </button>
-
-        <button id="studyNext">
-            Next →
-        </button>
-
-    </div>
-
-</div>
-
-        </div>
-<!-- ADD FLASHCARD FORM -->
-    <div id="flashcardForm" class="flashcard-form hidden">
-
-        <input
-            type="text"
-            id="flashcardQuestion"
-            placeholder="Question / Front"
-        >
-
-        <textarea
-            id="flashcardAnswer"
-            placeholder="Answer / Back"
-        ></textarea>
-
-        <div class="form-buttons">
-
-            <button id="saveFlashcard">
-                Save Flashcard
-            </button>
-
-            <button id="cancelFlashcard">
-                Cancel
-            </button>
-
-        </div>
-
-    </div>
-        <div id="flashcardList"></div>
-
-    </div>
-
-</div>
-
-    </div>
-
-</div>
-</div>
-
-
-</div>
-
-</section>
-
-
-        <!-- =========================
-             HABITS PAGE
-        ========================== -->
-
-        <section
-            id="habitsPage"
-            class="page">
-
-
-            <header>
-
-                <p>
-                    Daily Life
-                </p>
-
-                <h2>
-                    🌱 Habits
-                </h2>
-
-            </header>
-
-
-
-            <div class="panel">
-
-
-                <div class="panel-header">
-
-                    <h2>
-                        Today's Habits
-                    </h2>
-
-                    <button
-                        id="addHabitButton">
-                        + Add Habit
-                    </button>
-
-                </div>
-
-
-
-                <div
-                    id="habitForm"
-                    class="habit-form hidden">
-
-                    <input
-                        type="text"
-                        id="habitName"
-                        placeholder="New habit...">
-
-
-                    <div class="form-buttons">
-
-                        <button
-                            id="saveHabit">
-                            Save
-                        </button>
-
-                        <button
-                            id="cancelHabit">
-                            Cancel
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <div id="habitList"></div>
-
+            <span id="brewStatus" class="brew-status">ready to brew</span>
+          </div>
+
+          <div class="drink-picker" role="group" aria-label="Choose a drink">
+            <button class="drink-option selected" data-drink="matcha" type="button">🍵 Iced Matcha</button>
+            <button class="drink-option" data-drink="coffee" type="button">🧊 Iced Coffee</button>
+          </div>
+
+          <div class="brew-stage" id="brewStage">
+            <div class="steam steam-one"></div><div class="steam steam-two"></div>
+            <div class="ice ice-one"></div><div class="ice ice-two"></div><div class="ice ice-three"></div>
+            <div class="glass">
+              <div class="drink-liquid" id="drinkLiquid"></div>
+              <div class="drink-swirl" id="drinkSwirl"></div>
+              <div class="straw"></div>
             </div>
+            <div class="brew-spark spark-one">✦</div><div class="brew-spark spark-two">✧</div>
+          </div>
 
+          <div class="focus-info">
+            <p id="pomodoroMode">📚 Study Time</p>
+            <div id="pomodoroTimer" class="pomodoro-timer">25:00</div>
+            <p id="brewMessage" class="brew-message">Your matcha is waiting for you.</p>
+          </div>
 
+          <div class="pomodoro-buttons">
+            <button id="pomodoroStart" class="primary-button" type="button">▶ Start Focus</button>
+            <button id="pomodoroPause" class="soft-button" type="button">Ⅱ Pause</button>
+            <button id="pomodoroReset" class="soft-button" type="button">↻ Reset</button>
+          </div>
+          <div class="pomodoro-settings">
+            <button id="pomodoroStudy" type="button">25 min Study</button>
+            <button id="pomodoroBreak" type="button">5 min Break</button>
+          </div>
+          <p id="pomodoroSessions" class="muted">Sessions completed: 0</p>
         </section>
 
-
-
-        <!-- =========================
-             TODO PAGE
-        ========================== -->
-
-        <section
-            id="todoPage"
-            class="page">
-
-
-            <header>
-
-                <p>
-                    Daily Life
-                </p>
-
-                <h2>
-                    ✓ To-Do List
-                </h2>
-
-            </header>
-
-
-
-            <div class="panel">
-
-                <div class="panel-header">
-
-                    <h2>
-                        Today's Tasks
-                    </h2>
-
-                    <button
-                        id="addTodoButton">
-                        + Add Task
-                    </button>
-
-                </div>
-
-
-
-                <div
-                    id="todoForm"
-                    class="habit-form hidden">
-
-                    <input
-                        type="text"
-                        id="todoName"
-                        placeholder="What do you need to do?">
-
-
-                    <div class="form-buttons">
-
-                        <button
-                            id="saveTodo">
-                            Save
-                        </button>
-
-                        <button
-                            id="cancelTodo">
-                            Cancel
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <div id="todoList"></div>
-
+        <section class="top-section">
+          <div class="photo-widget panel">
+            <div class="panel-heading"><div><span class="section-kicker">a little inspiration</span><h3>My Study Bloom</h3></div></div>
+            <div class="photo-stack">
+              <div class="stack-card card-back-two"></div>
+              <div class="stack-card card-back-one"></div>
+              <img id="stackImage" src="assets/photo1.jpeg" alt="Study Bloom inspiration" class="main-photo" />
             </div>
+            <div class="photo-controls">
+              <button id="previousPhoto" type="button">‹</button>
+              <span id="photoNumber">1 / 3</span>
+              <button id="nextPhoto" type="button">›</button>
+            </div>
+          </div>
 
-
+          <div class="stats">
+            <div class="stat-card"><span>📚</span><strong id="assignmentCount">0</strong><p>assignments remaining</p></div>
+            <div class="stat-card"><span>🌱</span><strong id="habitProgress">0/0</strong><p>habits completed</p></div>
+            <div class="stat-card"><span>🔥</span><strong id="habitStreak">0</strong><p>day streak</p></div>
+          </div>
         </section>
 
-
-
-        <!-- =========================
-             CALENDAR PAGE
-        ========================== -->
-
-        <section
-            id="calendarPage"
-            class="page">
-
-
-            <header>
-
-                <p>
-                    Planning
-                </p>
-
-                <h2>
-                    📅 Calendar
-                </h2>
-
-            </header>
-
-
-
-            <div class="calendar-panel">
-
-
-                <div class="calendar-header">
-
-                    <button
-                        id="previousMonth">
-                        ‹
-                    </button>
-
-
-                    <h2 id="calendarTitle">
-                        August 2026
-                    </h2>
-
-
-                    <button
-                        id="nextMonth">
-                        ›
-                    </button>
-
-                </div>
-
-
-
-                <!-- WEEK DAYS -->
-
-                <div class="calendar-weekdays">
-
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
-                    <div>Sun</div>
-
-                </div>
-
-
-
-                <!-- DAYS -->
-
-                <div
-                    id="calendarDays"
-                    class="calendar-days">
-                </div>
-
-
-            </div>
-
-
-
-            <!-- SELECTED DATE -->
-
-            <div
-                id="selectedDatePanel"
-                class="panel selected-date-panel hidden">
-
-                <h2 id="selectedDateTitle">
-                    Assignments
-                </h2>
-
-                <div
-                    id="selectedDateAssignments">
-                </div>
-
-            </div>
-
-
+        <section class="content two-column">
+          <div class="panel">
+            <div class="panel-heading"><div><span class="section-kicker">coming up</span><h3>📚 Upcoming Assignments</h3></div><button id="dashboardAddAssignment" class="small-action" type="button">+ Add</button></div>
+            <div id="dashboardAssignmentList" class="mini-list"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-heading"><div><span class="section-kicker">today</span><h3>🌱 Today's Habits</h3></div><button id="dashboardAddHabit" class="small-action" type="button">+ Add</button></div>
+            <div id="dashboardHabitList" class="mini-list"></div>
+          </div>
         </section>
+      </section>
 
+      <section id="assignmentsPage" class="page">
+        <header class="page-header"><p class="eyebrow">University</p><h2>Assignments</h2><p class="subtitle">Keep the important things close, colourful, and easy to find.</p></header>
+        <div class="panel">
+          <div class="panel-heading"><div><span class="section-kicker">your workload</span><h3>All Assignments</h3></div><button id="addAssignmentButton" class="primary-button" type="button">+ Add Assignment</button></div>
+          <div id="assignmentForm" class="form-card hidden">
+            <div class="form-grid">
+              <input type="text" id="assignmentName" placeholder="Assignment name" />
+              <input type="text" id="assignmentCourse" placeholder="Course" />
+              <label>Due date<input type="date" id="assignmentDate" /></label><label>Due time<input type="time" id="assignmentTime" value="23:59" /></label>
+              <label>Priority<select id="assignmentPriority"><option value="urgent">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label>
+              <label>Reminder<select id="assignmentReminder"><option value="none">No reminder</option><option value="10m">10 minutes before</option><option value="30m">30 minutes before</option><option value="1d">1 day before</option><option value="2d">2 days before</option><option value="3d">3 days before</option><option value="4d">4 days before</option><option value="5d">5 days before</option></select></label>
+            </div>
+            <div class="form-buttons"><button id="saveAssignment" class="primary-button" type="button">Save Assignment</button><button id="cancelAssignment" class="soft-button" type="button">Cancel</button></div>
+          </div>
+          <div id="assignmentList" class="assignment-grid"></div>
+        </div>
 
+        <div class="panel classes-panel">
+          <div class="panel-heading"><div><span class="section-kicker">study library</span><h3>📖 My Classes</h3></div><button id="addClassButton" class="small-action" type="button">+ Add Class</button></div>
+          <p class="muted">Keep your subjects, chapters and flashcards together.</p>
+          <div id="classesContainer" class="class-grid"></div>
+          <div id="classDetails" class="class-details hidden">
+            <button id="backToClasses" class="back-button" type="button">← All Classes</button>
+            <h3 id="selectedClassName"></h3>
+            <div class="panel nested-panel"><div class="panel-heading"><h3>📖 Chapters</h3><button id="addChapterButton" class="small-action" type="button">+ Add Chapter</button></div><div id="chapterContainer" class="chapter-grid"></div></div>
+          </div>
+          <div id="flashcardView" class="hidden">
+            <button id="backToChapters" class="back-button" type="button">← Back to Chapters</button>
+            <button id="fullscreenFlashcards" class="back-button" type="button">⛶ Study Fullscreen</button>
+            <h3 id="selectedChapterName">🧠 Flashcards</h3>
+            <div class="flashcard-toolbar"><button id="addFlashcardButton" class="small-action" type="button">+ Add Flashcard</button><button id="startStudyTimer" class="small-action" type="button">🍅 Start Study Timer</button></div>
+            <div id="flashcardForm" class="form-card hidden"><input type="text" id="flashcardQuestion" placeholder="Question / Front" /><textarea id="flashcardAnswer" placeholder="Answer / Back"></textarea><div class="form-buttons"><button id="saveFlashcardButton" class="primary-button" type="button">Save Flashcard</button><button id="cancelFlashcardButton" class="soft-button" type="button">Cancel</button></div></div>
+            <div id="flashcardList" class="flashcard-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="habitsPage" class="page">
+        <header class="page-header"><p class="eyebrow">Daily Life</p><h2>Habits</h2><p class="subtitle">Three little corners for taking care of your whole life.</p></header>
+        <div class="habit-sections">
+          <div class="panel habit-category"><div class="panel-heading"><div><span class="section-kicker">♡ life</span><h3>Personal</h3></div><button class="small-action add-habit-category" data-category="personal" type="button">+ Add</button></div><div id="personalHabits" class="habit-list"></div></div>
+          <div class="panel habit-category"><div class="panel-heading"><div><span class="section-kicker">🎓 university</span><h3>Uni</h3></div><button class="small-action add-habit-category" data-category="uni" type="button">+ Add</button></div><div id="uniHabits" class="habit-list"></div></div>
+          <div class="panel habit-category"><div class="panel-heading"><div><span class="section-kicker">🫧 wellbeing</span><h3>Health</h3></div><button class="small-action add-habit-category" data-category="health" type="button">+ Add</button></div><div id="healthHabits" class="habit-list"></div></div>
+        </div>
+        <div id="habitForm" class="form-card hidden"><input type="text" id="habitName" placeholder="New habit..." /><input type="hidden" id="habitCategory" value="personal" /><div class="form-buttons"><button id="saveHabit" class="primary-button" type="button">Save Habit</button><button id="cancelHabit" class="soft-button" type="button">Cancel</button></div></div>
+      </section>
+
+      <section id="todoPage" class="page">
+        <header class="page-header"><p class="eyebrow">Daily Life</p><h2>To-Do</h2><p class="subtitle">A soft place for the small things that still matter.</p></header>
+        <div class="panel"><div class="panel-heading"><div><span class="section-kicker">today</span><h3>Today's Tasks</h3></div><button id="addTodoButton" class="primary-button" type="button">+ Add Task</button></div><div id="todoForm" class="form-card hidden"><input type="text" id="todoName" placeholder="What do you need to do?" /><div class="form-buttons"><button id="saveTodo" class="primary-button" type="button">Save Task</button><button id="cancelTodo" class="soft-button" type="button">Cancel</button></div></div><div id="todoList" class="todo-list"></div></div>
+      </section>
+
+      <section id="calendarPage" class="page">
+        <header class="page-header"><p class="eyebrow">Planning</p><h2>Calendar</h2><p class="subtitle">See your work and your life in one gentle little month.</p></header>
+        <div class="calendar-panel panel">
+          <div class="calendar-header"><button id="previousMonth" type="button">‹</button><h3 id="calendarTitle"></h3><button id="nextMonth" type="button">›</button></div>
+          <div class="calendar-weekdays"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div>
+          <div id="calendarDays" class="calendar-days"></div>
+        </div>
+        <div id="selectedDatePanel" class="panel selected-date-panel hidden"><div class="panel-heading"><div><span class="section-kicker">selected day</span><h3 id="selectedDateTitle"></h3></div><button id="addEventButton" class="small-action" type="button">+ Add Event</button></div><div id="selectedDateItems"></div></div>
+      </section>
+
+      <section id="settingsPage" class="page">
+        <header class="page-header"><p class="eyebrow">Your little corner</p><h2>Settings</h2><p class="subtitle">Make Study Bloom feel like yours.</p></header>
+        <div class="settings-grid">
+          <div class="panel"><span class="section-kicker">appearance</span><h3>Choose today's colour</h3><div class="theme-options"><button data-theme="pink" class="theme-choice" type="button"><span class="theme-dot pink"></span>Light Pink</button><button data-theme="blue" class="theme-choice" type="button"><span class="theme-dot blue"></span>Light Blue</button><button data-theme="red" class="theme-choice" type="button"><span class="theme-dot red"></span>Light Red</button><button data-theme="yellow" class="theme-choice" type="button"><span class="theme-dot yellow"></span>Light Yellow</button><button data-theme="matcha" class="theme-choice" type="button"><span class="theme-dot matcha"></span>Matcha Green</button></div><div class="setting-row"><span>Dark mode</span><label class="switch"><input id="darkModeToggle" type="checkbox" /><span></span></label></div></div>
+          <div class="panel"><span class="section-kicker">profile</span><h3>Make it yours</h3><div class="profile-editor"><div class="profile-avatar-large" id="profileAvatarLarge">♡</div><label>Display name<input id="profileName" type="text" placeholder="Your name" /></label><label>Dashboard name<input id="profileDashboardTitle" type="text" placeholder="my dashboard" /></label><label>Profile picture<input id="profilePicture" type="file" accept="image/*" /></label><label>Dashboard pictures <span class="muted">(up to 10)</span><input id="dashboardPicture" type="file" accept="image/*" multiple /></label><p class="muted small">Choose up to 10 photos. They stay in this browser for now.</p><div id="dashboardPhotoManager" class="dashboard-photo-manager"></div><div class="dashboard-photo-actions"><button id="removeDashboardPicture" class="soft-button" type="button">Use Study Bloom default photos</button></div><button id="saveProfile" class="primary-button" type="button">Save Profile</button></div></div>
+          <div class="panel"><span class="section-kicker">notifications</span><h3>Reminders</h3><p class="muted">Study Bloom can send browser notifications while this page is open. Full background notifications after closing the browser will be added with the account/backend layer.</p><button id="notificationPermission" class="soft-button" type="button">Enable Notifications</button><p id="notificationStatus" class="muted"></p></div>
+          <div class="panel"><span class="section-kicker">accounts</span><h3>Sign in</h3><p class="muted">The account screen is ready for Google/Apple authentication, but those providers need your own project credentials before they can be connected securely.</p><div class="account-buttons"><button class="soft-button auth-demo" data-provider="Google" type="button">Continue with Google</button><button class="soft-button auth-demo" data-provider="Apple" type="button">Continue with Apple</button></div><p id="authStatus" class="muted"></p></div>
+        </div>
+      </section>
     </main>
+  </div>
 
+  <div id="eventModal" class="modal hidden"><div class="modal-card"><button class="modal-close" data-close="eventModal" type="button">×</button><span class="section-kicker">calendar</span><h3>Add personal event</h3><input id="eventName" type="text" placeholder="Birthday, dinner, appointment..." /><input id="eventDate" type="date" /><div class="form-buttons"><button id="saveEvent" class="primary-button" type="button">Add Event</button><button class="soft-button" data-close="eventModal" type="button">Cancel</button></div></div></div>
+  <div id="titleModal" class="modal hidden"><div class="modal-card"><button class="modal-close" data-close="titleModal" type="button">×</button><span class="section-kicker">your space</span><h3>Name your dashboard</h3><input id="dashboardTitleInput" type="text" placeholder="my dashboard" /><div class="form-buttons"><button id="saveDashboardTitle" class="primary-button" type="button">Save</button><button class="soft-button" data-close="titleModal" type="button">Cancel</button></div></div></div>
 
+  <div id="studyMode" class="study-mode hidden">
+    <button id="exitStudyMode" type="button">✕ Exit Study Mode</button>
+    <div class="study-progress"><span id="studyCardNumber">1 / 1</span><span id="studyScore">Score: 0</span></div>
+    <div id="studyCard" class="study-card-large"><div id="studyQuestion"></div><div id="studyAnswer" class="hidden"></div><p>Click to reveal the answer</p></div>
+    <div class="study-answer-buttons"><button id="studyWrong" class="wrong-button" type="button">✕ Wrong</button><button id="studyRight" class="right-button" type="button">✓ Got it right</button></div>
+    <div class="study-navigation"><button id="studyPrevious" type="button">← Previous</button><button id="studyNext" type="button">Next →</button></div>
+    <div id="studyResult" class="study-result hidden"></div>
+  </div>
 
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
