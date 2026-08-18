@@ -1,3 +1,12 @@
-Study Bloom v4 — dashboard photo upload
+Study Bloom v5 — 10 dashboard photos
 
-Open index.html in a browser. In Settings → Profile, upload a profile picture and/or a dashboard picture. The dashboard picture is saved in this browser and replaces the default Study Bloom photo carousel until you choose “Use Study Bloom default photos”. Theme, profile, and dashboard settings are also stored locally.
+Open index.html in a browser.
+
+In Settings → Profile, users can:
+- upload a profile picture
+- upload up to 10 dashboard pictures at once
+- remove individual dashboard pictures
+- restore the default Study Bloom photos
+- customize their display name and dashboard name
+
+Dashboard photos are stored locally in the current browser for now. They will be connected to user accounts when the authentication/backend layer is added.
