@@ -2778,6 +2778,7 @@ updatePomodoroDisplay();
         const page = $("notesPage");
         if(page) page.classList.add("active-page");
         document.querySelectorAll(".nav-button").forEach(b => b.classList.remove("active"));
+        document.querySelector('[data-page="notes"]')?.classList.add("active");
     }
 
     function renderSubjects(){
@@ -3014,19 +3015,11 @@ updatePomodoroDisplay();
         $("notesQuizResult").classList.add("hidden");
         $("notesQuizIntro").textContent=`Practice ${selectedChapter.name} using the material in this note.`;
     }
-
-    // Wire Notes subfolder button if it exists.
-    document.addEventListener("click", function(e){
-        const btn=e.target.closest("[data-settings-page='notes']");
-        if(btn){ e.preventDefault(); ensureNotesPage(); renderSubjects(); }
-    });
-
-    $("notesEmptyAddSubject")?.addEventListener("click", addSubject);
+$("notesEmptyAddSubject")?.addEventListener("click", addSubject);
     $("addNoteSubjectButton")?.addEventListener("click", addSubject);
     $("notesBackToSettings")?.addEventListener("click", ()=>{
-        const target=document.querySelector('[data-page="settings"]');
+        const target=document.querySelector('[data-page="dashboard"]');
         if(target) target.click();
-        else { document.querySelectorAll(".page").forEach(p=>p.classList.remove("active-page")); $("dashboardPage")?.classList.add("active-page"); }
     });
     $("notesBackToSubjects")?.addEventListener("click", ()=>{ $("notesSubjectView").classList.add("hidden"); $("notesEmptyState").classList.remove("hidden"); selectedSubject=null; renderSubjects(); });
     $("notesBackToSubject")?.addEventListener("click", ()=>{ saveEditor(); $("notesEditorView").classList.add("hidden"); $("notesSubjectView").classList.remove("hidden"); renderChapterList(); });
@@ -3057,6 +3050,7 @@ updatePomodoroDisplay();
     $("notesQuizNext")?.addEventListener("click",()=>{if(quiz.index===quiz.questions.length-1)finishQuiz();else{quiz.index++;showQuestion();}});
     $("notesPracticeWrong")?.addEventListener("click",()=>startQuiz(quiz.wrong.length,true));
     $("notesCloseResult")?.addEventListener("click",()=>$("notesQuestionModal").classList.add("hidden"));
+    });
 
     // Initial rendering.
     renderSubjects();

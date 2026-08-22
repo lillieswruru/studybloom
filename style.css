@@ -2202,3 +2202,4 @@ header h2 {
 .notes-wrong-item{background:#fff;padding:12px;border-radius:12px;margin-top:8px;border:1px solid #eee}
 .hidden{display:none !important}
 @media(max-width:800px){.notes-layout{grid-template-columns:1fr}.notes-sidebar{min-height:auto}.notes-header,.notes-editor-topbar{align-items:flex-start;flex-direction:column}.notes-editor{padding:25px 20px}.notes-main{padding:18px}}
+

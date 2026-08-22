@@ -64,6 +64,18 @@
                 📅 Calendar
             </button>
 
+            <button class="nav-button" data-page="notes">
+                📚 Notes
+            </button>
+
+
+            <button
+                class="nav-button"
+                data-page="settings">
+                ⚙️ Settings
+            </button>
+
+
         </nav>
 
     </aside>
@@ -900,6 +912,12 @@
 
 
         </section>
+<!-- =========================
+     PERSONAL NOTES
+     ========================= -->
+
+
+<!-- Notes question practice modal -->
 
 
     </main>
@@ -908,25 +926,11 @@
 
     <script src="script.js"></script>
 
-
-                <button class="settings-subfolder-button" data-settings-page="notes">
-                    <span class="settings-subfolder-icon">📚</span>
-                    <span>
-                        <strong>Notes</strong>
-                        <small>Write, organize & study</small>
-                    </span>
-                    <span class="settings-chevron">›</span>
-                </button>
-
-
-<!-- =========================
-     PERSONAL NOTES
-     ========================= -->
 <section id="notesPage" class="page">
     <div class="notes-shell">
         <div class="notes-header">
             <div>
-                <button id="notesBackToSettings" class="notes-back-button">← Settings</button>
+                <button id="notesBackToSettings" class="notes-back-button">← Dashboard</button>
                 <p class="notes-eyebrow">PERSONAL STUDY SPACE</p>
                 <h1>📚 Notes</h1>
                 <p class="notes-subtitle">Write your notes, organize your subjects, and turn them into practice questions.</p>
@@ -1046,7 +1050,6 @@
     </div>
 </section>
 
-<!-- Notes question practice modal -->
 <div id="notesQuestionModal" class="notes-modal hidden">
     <div class="notes-modal-card">
         <button id="closeNotesQuestionModal" class="notes-modal-close">×</button>
@@ -1092,7 +1095,5 @@
         </div>
     </div>
 </div>
-
 </body>
-
 </html>
